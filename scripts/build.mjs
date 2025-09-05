@@ -33,8 +33,19 @@ async function fetchArticle(url){
     return htmlToText(html,{wordwrap:false, selectors:[{selector:'a',options:{ignoreHref:true}}]});
   }catch{return ''}
 }
-function escapeHtml(s){return String(s||'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',\"'\":'&#39;'}[m]))}
-function escapeAttr(s){return escapeHtml(s).replace(/"/g,'&quot;')}
+function escapeHtml(s) {
+  let t = String(s ?? '');
+  t = t.replace(/&/g, '&amp;')
+       .replace(/</g, '&lt;')
+       .replace(/>/g, '&gt;')
+       .replace(/"/g, '&quot;')
+       .replace(/'/g, '&#39;');
+  return t;
+}
+
+function escapeAttr(s) {
+  return escapeHtml(s).replace(/"/g, '&quot;');
+}
 
 async function summarize(openai, body){
   const sys='당신은 한국어 경제기사를 2~3문장(200자 내)으로 핵심만 요약하는 전문가입니다. 수치/기관명을 보존하세요.';
