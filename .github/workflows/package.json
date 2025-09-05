@@ -1,0 +1,14 @@
+{
+  "name": "daily-top10-pages",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs"
+  },
+  "dependencies": {
+    "openai": "^4.56.0",
+    "rss-parser": "^3.13.0",
+    "html-to-text": "^9.0.5",
+    "node-fetch": "^3.3.2"
+  }
+}
