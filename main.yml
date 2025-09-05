@@ -16,7 +16,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
-      - run: npm ci
+      - run: npm install          # ← 여기만 npm ci → npm install 로 변경
       - run: npm run build
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
